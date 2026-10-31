@@ -407,10 +407,16 @@ abstract class Wallet2Wallet {
   });
   bool importKeyImages(String filename);
   bool importKeyImagesUR(String input);
+  bool importKeyImagesURAtOffset(String input, int offset);
   bool exportOutputs(String filename, {required bool all});
   String exportOutputsUR({
     int max_fragment_length = 130,
     bool all = false,
+  });
+  (int, int, String) exportOutputsURWithOffset({
+    int max_fragment_length = 130,
+    bool all = false,
+    int count = 0xffffffff,
   });
   bool importOutputs(String filename);
   bool importOutputsUR(String input);

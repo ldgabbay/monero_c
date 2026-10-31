@@ -1060,6 +1060,15 @@ class MoneroWallet implements Wallet2Wallet {
   }
 
   @override
+  (int, int, String) exportOutputsURWithOffset(
+      {int max_fragment_length = 130,
+      bool all = false,
+      int count = 0xffffffff}) {
+    return monero.Wallet_exportOutputsURWithOffset(walletPtr,
+        max_fragment_length: max_fragment_length, all: all, count: count);
+  }
+
+  @override
   String filename() {
     return monero.Wallet_filename(walletPtr);
   }
@@ -1193,6 +1202,11 @@ class MoneroWallet implements Wallet2Wallet {
   @override
   bool importKeyImagesUR(String input) {
     return monero.Wallet_importKeyImagesUR(walletPtr, input);
+  }
+
+  @override
+  bool importKeyImagesURAtOffset(String input, int offset) {
+    return monero.Wallet_importKeyImagesURAtOffset(walletPtr, input, offset);
   }
 
   @override

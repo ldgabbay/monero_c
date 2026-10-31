@@ -1199,6 +1199,19 @@ class WowneroWallet implements Wallet2Wallet {
   }
 
   @override
+  bool importKeyImagesURAtOffset(String input, int offset) {
+    throw UnimplementedError();
+  }
+
+  @override
+  (int, int, String) exportOutputsURWithOffset(
+      {int max_fragment_length = 130,
+      bool all = false,
+      int count = 0xffffffff}) {
+    throw UnimplementedError();
+  }
+
+  @override
   int importMultisigImages({required List<String> info}) {
     throw UnimplementedError();
   }
