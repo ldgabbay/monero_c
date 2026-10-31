@@ -740,9 +740,16 @@ extern ADDAPI const char* MONERO_Wallet_exportKeyImagesUR(void* wallet_ptr, size
 //     virtual bool importKeyImages(const std::string &filename) = 0;
 extern ADDAPI bool MONERO_Wallet_importKeyImages(void* wallet_ptr, const char* filename);
 extern ADDAPI bool MONERO_Wallet_importKeyImagesUR(void* wallet_ptr, const char* input);
+extern ADDAPI bool MONERO_Wallet_importKeyImagesURAtOffset(void* wallet_ptr, const char* input, uint32_t offset);
 //     virtual bool exportOutputs(const std::string &filename, bool all = false) = 0;
 extern ADDAPI bool MONERO_Wallet_exportOutputs(void* wallet_ptr, const char* filename, bool all);
 extern ADDAPI const char* MONERO_Wallet_exportOutputsUR(void* wallet_ptr, size_t max_fragment_length, bool all);
+typedef struct {
+    uint64_t offset;
+    uint64_t count;
+    const char* ur;
+} MONERO_OutputsExport;
+extern ADDAPI MONERO_OutputsExport MONERO_Wallet_exportOutputsURWithOffset(void* wallet_ptr, size_t max_fragment_length, bool all, uint32_t count);
 //     virtual bool importOutputs(const std::string &filename) = 0;
 extern ADDAPI bool MONERO_Wallet_importOutputs(void* wallet_ptr, const char* filename);
 extern ADDAPI bool MONERO_Wallet_importOutputsUR(void* wallet_ptr, const char* input);

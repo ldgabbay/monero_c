@@ -1702,6 +1702,12 @@ bool MONERO_Wallet_importKeyImagesUR(void* wallet_ptr, const char* input) {
     return wallet->importKeyImagesUR(std::string(input));
     DEBUG_END()
 }
+bool MONERO_Wallet_importKeyImagesURAtOffset(void* wallet_ptr, const char* input, uint32_t offset) {
+    DEBUG_START()
+    Monero::Wallet *wallet = reinterpret_cast<Monero::Wallet*>(wallet_ptr);
+    return wallet->importKeyImagesURAtOffset(std::string(input), offset);
+    DEBUG_END()
+}
 bool MONERO_Wallet_exportOutputs(void* wallet_ptr, const char* filename, bool all) {
     DEBUG_START()
     Monero::Wallet *wallet = reinterpret_cast<Monero::Wallet*>(wallet_ptr);
@@ -1713,6 +1719,15 @@ const char* MONERO_Wallet_exportOutputsUR(void* wallet_ptr, size_t max_fragment_
     Monero::Wallet *wallet = reinterpret_cast<Monero::Wallet*>(wallet_ptr);
     std::string str = wallet->exportOutputsUR(max_fragment_length, all);
     return strdup(str.c_str());
+    DEBUG_END()
+}
+MONERO_OutputsExport MONERO_Wallet_exportOutputsURWithOffset(void* wallet_ptr, size_t max_fragment_length, bool all, uint32_t count) {
+    DEBUG_START()
+    Monero::Wallet *wallet = reinterpret_cast<Monero::Wallet*>(wallet_ptr);
+    uint64_t offset, exported;
+    std::string str;
+    std::tie(offset, exported, str) = wallet->exportOutputsURWithOffset(max_fragment_length, all, count);
+    return {offset, exported, strdup(str.c_str())};
     DEBUG_END()
 }
 bool MONERO_Wallet_importOutputs(void* wallet_ptr, const char* filename) {

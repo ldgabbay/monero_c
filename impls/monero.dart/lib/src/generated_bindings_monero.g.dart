@@ -3714,6 +3714,26 @@ class MoneroC {
       _MONERO_Wallet_importKeyImagesURPtr.asFunction<
           bool Function(ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Char>)>();
 
+  bool MONERO_Wallet_importKeyImagesURAtOffset(
+    ffi.Pointer<ffi.Void> wallet_ptr,
+    ffi.Pointer<ffi.Char> input,
+    int offset,
+  ) {
+    return _MONERO_Wallet_importKeyImagesURAtOffset(
+      wallet_ptr,
+      input,
+      offset,
+    );
+  }
+
+  late final _MONERO_Wallet_importKeyImagesURAtOffsetPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Bool Function(ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Char>,
+              ffi.Uint32)>>('MONERO_Wallet_importKeyImagesURAtOffset');
+  late final _MONERO_Wallet_importKeyImagesURAtOffset =
+      _MONERO_Wallet_importKeyImagesURAtOffsetPtr.asFunction<
+          bool Function(ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Char>, int)>();
+
   bool MONERO_Wallet_exportOutputs(
     ffi.Pointer<ffi.Void> wallet_ptr,
     ffi.Pointer<ffi.Char> filename,
@@ -3753,6 +3773,32 @@ class MoneroC {
   late final _MONERO_Wallet_exportOutputsUR =
       _MONERO_Wallet_exportOutputsURPtr.asFunction<
           ffi.Pointer<ffi.Char> Function(ffi.Pointer<ffi.Void>, int, bool)>();
+
+  MONERO_OutputsExport MONERO_Wallet_exportOutputsURWithOffset(
+    ffi.Pointer<ffi.Void> wallet_ptr,
+    int max_fragment_length,
+    bool all,
+    int count,
+  ) {
+    return _MONERO_Wallet_exportOutputsURWithOffset(
+      wallet_ptr,
+      max_fragment_length,
+      all,
+      count,
+    );
+  }
+
+  late final _MONERO_Wallet_exportOutputsURWithOffsetPtr = _lookup<
+      ffi.NativeFunction<
+          MONERO_OutputsExport Function(
+              ffi.Pointer<ffi.Void>,
+              ffi.Size,
+              ffi.Bool,
+              ffi.Uint32)>>('MONERO_Wallet_exportOutputsURWithOffset');
+  late final _MONERO_Wallet_exportOutputsURWithOffset =
+      _MONERO_Wallet_exportOutputsURWithOffsetPtr.asFunction<
+          MONERO_OutputsExport Function(
+              ffi.Pointer<ffi.Void>, int, bool, int)>();
 
   bool MONERO_Wallet_importOutputs(
     ffi.Pointer<ffi.Void> wallet_ptr,
@@ -5484,4 +5530,14 @@ class MoneroC {
   late final _MONERO_checksum_wallet2_api_c_exp =
       _MONERO_checksum_wallet2_api_c_expPtr.asFunction<
           ffi.Pointer<ffi.Char> Function()>();
+}
+
+final class MONERO_OutputsExport extends ffi.Struct {
+  @ffi.Uint64()
+  external int offset;
+
+  @ffi.Uint64()
+  external int count;
+
+  external ffi.Pointer<ffi.Char> ur;
 }
