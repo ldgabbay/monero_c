@@ -72,7 +72,7 @@ elseif (${MONERO_FLAVOR} STREQUAL "beldex")
 endif()
 
 if(NOT HOST_ABI MATCHES "-apple-")
-    set_target_properties(${MONERO_FLAVOR}_wallet2_api_c PROPERTIES LINK_FLAGS "-Wl,--exclude-libs,ALL")
+    set_property(TARGET ${MONERO_FLAVOR}_wallet2_api_c APPEND_STRING PROPERTY LINK_FLAGS " -Wl,--exclude-libs,ALL")
 endif()
 
 if (${MONERO_FLAVOR} STREQUAL "zano")
