@@ -3101,6 +3101,29 @@ bool Wallet_exportOutputs(wallet ptr, String filename, {required bool all}) {
 }
 
 @Deprecated("TODO")
+int Wallet_feePerByte(wallet ptr, {required int priority}) {
+  debugStart?.call('MONERO_Wallet_feePerByte');
+  lib ??= MoneroC(DynamicLibrary.open(libPath));
+  final s = lib!.MONERO_Wallet_feePerByte(ptr, priority);
+  debugEnd?.call('MONERO_Wallet_feePerByte');
+  return s;
+}
+
+@Deprecated("TODO")
+int Wallet_estimateFee(
+  wallet ptr, {
+  required int inputs,
+  required int outputs,
+  required int feePerByte,
+}) {
+  debugStart?.call('MONERO_Wallet_estimateFee');
+  lib ??= MoneroC(DynamicLibrary.open(libPath));
+  final s = lib!.MONERO_Wallet_estimateFee(ptr, inputs, outputs, feePerByte);
+  debugEnd?.call('MONERO_Wallet_estimateFee');
+  return s;
+}
+
+@Deprecated("TODO")
 (int, int, String) Wallet_exportOutputsURWithOffset(
   wallet ptr, {
   int max_fragment_length = 130,
