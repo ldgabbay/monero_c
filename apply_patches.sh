@@ -18,7 +18,7 @@ fi
 
 # These coins' patches are commits in their forks. Stopping here also keeps the
 # forced submodule update below from discarding local changes.
-if [[ "x$repo" == "xmonero" || "x$repo" == "xwownero" ]];
+if [[ "x$repo" == "xmonero" || "x$repo" == "xwownero" || "x$repo" == "xzano" ]];
 then
     echo "$repo needs no patches, nothing to do."
     exit 0
