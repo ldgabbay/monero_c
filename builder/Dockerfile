@@ -44,7 +44,7 @@ FROM builder_base AS monero_c_base
 COPY . /w
 RUN sudo chown -R user:user /w
 RUN git submodule update --init --force --recursive \
-    && for coin in monero beldex wownero zano; do \
+    && for coin in beldex wownero zano; do \
         ./apply_patches.sh $coin \
         && count=$(find patches/$coin -maxdepth 1 -name "*.patch" | wc -l) \
         && count=$((count + 2)) \

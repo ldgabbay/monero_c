@@ -1,7 +1,6 @@
 [submodule "monero"]
 	path = monero
-	url = https://github.com/monero-project/monero
-	branch = release-v0.18
+	url = https://github.com/ldgabbay/monero
 	shallow = true
 [submodule "wownero"]
 	path = wownero

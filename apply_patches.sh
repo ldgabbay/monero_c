@@ -16,6 +16,14 @@ then
     echo "Invalid target given, only monero and wownero are supported targets"
 fi
 
+# Monero's patches are commits in its fork. Stopping here also keeps the forced
+# submodule update below from discarding local changes.
+if [[ "x$repo" == "xmonero" ]];
+then
+    echo "monero needs no patches, nothing to do."
+    exit 0
+fi
+
 if [[ ! -d "$repo" ]]
 then
     echo "no '$repo' directory found. clone with --recursive or run:"
