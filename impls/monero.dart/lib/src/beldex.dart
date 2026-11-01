@@ -979,6 +979,16 @@ class BeldexWallet implements Wallet2Wallet {
   }
   
   @override
+  int feePerByte({required int priority}) {
+    throw UnimplementedError();
+  }
+
+  @override
+  int estimateFee({required int inputs, required int outputs, required int feePerByte}) {
+    throw UnimplementedError();
+  }
+
+  @override
   String exportOutputsUR({int max_fragment_length = 130, bool all = false}) {
     return beldex.Wallet_exportOutputsUR(walletPtr, max_fragment_length: max_fragment_length, all: all);
   }

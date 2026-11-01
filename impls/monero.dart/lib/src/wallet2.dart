@@ -409,6 +409,8 @@ abstract class Wallet2Wallet {
   bool importKeyImagesUR(String input);
   bool importKeyImagesURAtOffset(String input, int offset);
   bool exportOutputs(String filename, {required bool all});
+  int feePerByte({required int priority});
+  int estimateFee({required int inputs, required int outputs, required int feePerByte});
   String exportOutputsUR({
     int max_fragment_length = 130,
     bool all = false,

@@ -1054,6 +1054,17 @@ class MoneroWallet implements Wallet2Wallet {
   }
 
   @override
+  int feePerByte({required int priority}) {
+    return monero.Wallet_feePerByte(walletPtr, priority: priority);
+  }
+
+  @override
+  int estimateFee({required int inputs, required int outputs, required int feePerByte}) {
+    return monero.Wallet_estimateFee(walletPtr,
+        inputs: inputs, outputs: outputs, feePerByte: feePerByte);
+  }
+
+  @override
   String exportOutputsUR({int max_fragment_length = 130, bool all = false}) {
     return monero.Wallet_exportOutputsUR(walletPtr,
         max_fragment_length: max_fragment_length, all: all);
