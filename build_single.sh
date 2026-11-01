@@ -31,10 +31,10 @@ then
     exit 1
 fi
 
-if [[ ! -d "$repo" ]]
+if [[ ! -f "$repo/CMakeLists.txt" ]]
 then
-    echo "no '$repo' directory found. clone with --recursive or run:"
-    echo '$ git submodule init && git submodule update --force';
+    echo "'$repo' isn't initialized. clone with --recursive or run:"
+    echo '$ git submodule update --init --recursive'
     exit 1
 fi
 
