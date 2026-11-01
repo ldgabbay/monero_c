@@ -43,14 +43,7 @@ RUN make HOST=aarch64-apple-ios-simulator && make HOST=aarch64-apple-ios-simulat
 FROM builder_base AS monero_c_base
 COPY . /w
 RUN sudo chown -R user:user /w
-RUN git submodule update --init --force --recursive \
-    && for coin in beldex; do \
-        ./apply_patches.sh $coin \
-        && count=$(find patches/$coin -maxdepth 1 -name "*.patch" | wc -l) \
-        && count=$((count + 2)) \
-        && cd $coin && git reset HEAD~$count \
-        && cd ..; \
-    done
+RUN git submodule update --init --force --recursive
 
 FROM monero_c_base AS monero_c
 COPY --from=contrib_simplybs /w/contrib/depends /w/contrib/depends

@@ -17,5 +17,5 @@
 	shallow = true
 [submodule "beldex"]
 	path = beldex
-	url = https://github.com/Beldex-Coin/beldex
+	url = https://github.com/ldgabbay/beldex
 	branch = dev

@@ -37,7 +37,6 @@ $ apt install -y build-essential pkg-config autoconf libtool \
 ```bash
 $ git clone https://github.com/mrcyjanek/monero_c --recursive
 $ cd monero_c
-$ ./apply_patches.sh monero
 ```
 
 ## Building
