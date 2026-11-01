@@ -1714,6 +1714,18 @@ bool MONERO_Wallet_exportOutputs(void* wallet_ptr, const char* filename, bool al
     return wallet->exportOutputs(std::string(filename), all);
     DEBUG_END()
 }
+uint64_t MONERO_Wallet_feePerByte(void* wallet_ptr, int priority) {
+    DEBUG_START()
+    Monero::Wallet *wallet = reinterpret_cast<Monero::Wallet*>(wallet_ptr);
+    return wallet->feePerByte(static_cast<Monero::PendingTransaction::Priority>(priority));
+    DEBUG_END()
+}
+uint64_t MONERO_Wallet_estimateFee(void* wallet_ptr, size_t inputs, size_t outputs, uint64_t feePerByte) {
+    DEBUG_START()
+    Monero::Wallet *wallet = reinterpret_cast<Monero::Wallet*>(wallet_ptr);
+    return wallet->estimateFee(inputs, outputs, feePerByte);
+    DEBUG_END()
+}
 const char* MONERO_Wallet_exportOutputsUR(void* wallet_ptr, size_t max_fragment_length, bool all) {
     DEBUG_START()
     Monero::Wallet *wallet = reinterpret_cast<Monero::Wallet*>(wallet_ptr);

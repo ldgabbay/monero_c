@@ -3754,6 +3754,44 @@ class MoneroC {
       _MONERO_Wallet_exportOutputsPtr.asFunction<
           bool Function(ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Char>, bool)>();
 
+  int MONERO_Wallet_feePerByte(
+    ffi.Pointer<ffi.Void> wallet_ptr,
+    int priority,
+  ) {
+    return _MONERO_Wallet_feePerByte(
+      wallet_ptr,
+      priority,
+    );
+  }
+
+  late final _MONERO_Wallet_feePerBytePtr = _lookup<
+          ffi
+          .NativeFunction<ffi.Uint64 Function(ffi.Pointer<ffi.Void>, ffi.Int)>>(
+      'MONERO_Wallet_feePerByte');
+  late final _MONERO_Wallet_feePerByte = _MONERO_Wallet_feePerBytePtr
+      .asFunction<int Function(ffi.Pointer<ffi.Void>, int)>();
+
+  int MONERO_Wallet_estimateFee(
+    ffi.Pointer<ffi.Void> wallet_ptr,
+    int inputs,
+    int outputs,
+    int feePerByte,
+  ) {
+    return _MONERO_Wallet_estimateFee(
+      wallet_ptr,
+      inputs,
+      outputs,
+      feePerByte,
+    );
+  }
+
+  late final _MONERO_Wallet_estimateFeePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Uint64 Function(ffi.Pointer<ffi.Void>, ffi.Size, ffi.Size,
+              ffi.Uint64)>>('MONERO_Wallet_estimateFee');
+  late final _MONERO_Wallet_estimateFee = _MONERO_Wallet_estimateFeePtr
+      .asFunction<int Function(ffi.Pointer<ffi.Void>, int, int, int)>();
+
   ffi.Pointer<ffi.Char> MONERO_Wallet_exportOutputsUR(
     ffi.Pointer<ffi.Void> wallet_ptr,
     int max_fragment_length,
