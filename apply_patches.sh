@@ -16,11 +16,11 @@ then
     echo "Invalid target given, only monero and wownero are supported targets"
 fi
 
-# Monero's patches are commits in its fork. Stopping here also keeps the forced
-# submodule update below from discarding local changes.
-if [[ "x$repo" == "xmonero" ]];
+# These coins' patches are commits in their forks. Stopping here also keeps the
+# forced submodule update below from discarding local changes.
+if [[ "x$repo" == "xmonero" || "x$repo" == "xwownero" ]];
 then
-    echo "monero needs no patches, nothing to do."
+    echo "$repo needs no patches, nothing to do."
     exit 0
 fi
 
@@ -40,13 +40,6 @@ fi
 set -e
 cd $repo
 git am -3 --whitespace=fix --reject ../patches/$repo/*.patch
-if [[ "$repo" == "wownero" ]];
-then
-    pushd external/randomwow
-        git remote set-url origin https://github.com/mrcyjanek/randomwow.git
-    popd
-fi
-
 git submodule init
 git submodule update --init --recursive --force
 

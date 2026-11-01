@@ -4,7 +4,7 @@
 	shallow = true
 [submodule "wownero"]
 	path = wownero
-	url = https://codeberg.org/wownero/wownero
+	url = https://github.com/ldgabbay/wownero
 	shallow = true
 [submodule "zano"]
 	path = zano
