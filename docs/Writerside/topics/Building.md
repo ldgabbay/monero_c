@@ -2,7 +2,7 @@
 
 Building monero_c comes down to these simple steps:
 ```bash
-$ git clone https://github.com/mrcyjanek/monero_c --recursive
+$ git clone -b fork https://github.com/ldgabbay/monero_c --recursive
 $ ./build_single x86_64-linux-gnu -j$(nproc)
 ```
 

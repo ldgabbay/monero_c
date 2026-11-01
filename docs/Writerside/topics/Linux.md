@@ -41,7 +41,7 @@ $ apt install -y build-essential pkg-config autoconf libtool \
 > ```
 
 ```bash
-$ git clone https://github.com/mrcyjanek/monero_c --recursive
+$ git clone -b fork https://github.com/ldgabbay/monero_c --recursive
 $ cd monero_c
 ```
 
